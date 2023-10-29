@@ -39,6 +39,12 @@ int main(){
             cadastrarCliente(clientes, &numClientes);
         }
 
+     // Se o input do usuário = 2, deleta uma tarefa de acordo com seu respectivo número.
+        else if(opcao == 2){
+            deletarCliente(clientes, &numClientes);
+        }
+
+
      // Se o input do usuário não for nenhuma das opções acima, retorna erro.
         else{
             printf("\n");
