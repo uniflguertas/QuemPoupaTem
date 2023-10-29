@@ -28,7 +28,18 @@ int main(){
         printf("\nDigite aqui o algarismo da funcionalidade desejada: ");
         scanf("%d", &opcao);
 
+     // Se o input = 0, encerra o programa.
+        if(opcao == 0){
+            printf("\n");
+            printf("Encerrando Banco...\n");
+        } 
 
+     // Se o input do usuário não for nenhuma das opções acima, retorna erro.
+        else{
+            printf("\n");
+            printf("ERRO: Funcionalidade inexistente.\n");
+            printf("==================================\n");
+        }
      
     } while (opcao != 0);
 //     ^ manter o loop enquanto opção != 0.
