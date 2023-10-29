@@ -223,3 +223,53 @@ void depositoCliente (Cliente clientes[], int *numClientes) {
         printf("======================================================\n");
     }
 }
+
+//Função para realização de débitos:
+void transferenciaClientes (Cliente clientes[], int *numClientes) {
+ // Declaração de Variáveis.
+    double valorTransferido;
+    char verificaCpf1[12];
+    char verificaCpf2[12];
+    char verificaSenha[100];
+
+    printf("======================================================\n");
+
+ // Pedido ao usuário das informações necessárias (CPF e senha).
+    printf("\nRealizar Transferência entre Contas:\n");
+    printf("\nDigite aqui o CPF do remetente: ");
+    scanf("%s", verificaCpf1);
+    printf("Digite aqui a senha do remetente: ");
+    scanf("%s", verificaSenha);
+    printf("Digite aqui o CPF do destinatário: ");
+    scanf("%s", verificaCpf2);
+    printf("Digite aqui o valor da transferência: R$");
+    scanf("%lf", &valorTransferido);
+
+ // Se o número de clientes > 0, executa a função.
+    if (*numClientes > 0) {
+     // Laço de repetição para percorrer os clientes
+        for (int i = 0; i < *numClientes; i++) {
+            // String compare das informações fornecidas: se CPF e senha conferem para algum cliente, realiza a transferência.
+            if (strcmp(verificaCpf1, clientes[i].cpf) == 0 && strcmp(verificaSenha, clientes[i].senha) == 0) {
+                // Condicional de acordo com o tipo de conta do usuário: se a conta é comum, aplica taxa de 5%, se plus, aplica taxa de 3%.
+                if (strcmp("comum", clientes[i].tipo_conta) == 0) {
+                    clientes[i].valor_inicial -= valorTransferido + (valorTransferido * 0.05);
+                } else if (strcmp("plus", clientes[i].tipo_conta) == 0) {
+                    clientes[i].valor_inicial -= valorTransferido + (valorTransferido * 0.03);
+                }
+            }
+            else if (strcmp(verificaCpf2, clientes[i].cpf) == 0) {
+                clientes[i].valor_inicial += valorTransferido;
+
+                printf("Transferência realizada com sucesso!");
+                printf("======================================================\n");
+            }
+
+                // Se as informações não coincidirem com nenhum cliente, retorna erro.
+            else {
+                printf("\n(ERRO: CPF ou senha inválidos. Cliente não encontrado)\n");
+                printf("======================================================\n");
+            }
+        }
+    }
+}
