@@ -32,7 +32,12 @@ int main(){
         if(opcao == 0){
             printf("\n");
             printf("Encerrando Banco...\n");
-        } 
+        }
+
+     // Se o input do usuário = 1, cadastra uma novo cliente.
+        else if(opcao == 1){
+            cadastrarCliente(clientes, &numClientes);
+        }
 
      // Se o input do usuário não for nenhuma das opções acima, retorna erro.
         else{
