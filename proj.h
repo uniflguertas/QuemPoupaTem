@@ -6,3 +6,6 @@ typedef struct {
     double valor_inicial;
     char senha[100];
 } Cliente;
+
+// Declaração das funções do "proj.c":
+void cadastrarCliente(Cliente clientes[], int *numClientes);
