@@ -12,3 +12,4 @@ void cadastrarCliente(Cliente clientes[], int *numClientes);
 void listarCliente(Cliente clientes[], int numClientes);
 void deletarCliente(Cliente clientes[], int *numClientes);
 void debitoCliente(Cliente clientes[], int *numClientes);
+void depositoCliente(Cliente clientes[], int *numClientes);
