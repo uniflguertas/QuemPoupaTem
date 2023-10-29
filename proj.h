@@ -9,3 +9,4 @@ typedef struct {
 
 // Declaração das funções do "proj.c":
 void cadastrarCliente(Cliente clientes[], int *numClientes);
+void listarCliente(Cliente clientes[], int numClientes);
