@@ -53,6 +53,11 @@ int main(){
         else if(opcao == 4){
             debitoCliente(clientes, &numClientes);
         }
+            
+     // Se o input do usuário = 5, realizar um depósito.       
+        else if(opcao == 5){
+            depositoCliente(clientes, &numClientes);
+        }
 
      // Se o input do usuário não for nenhuma das opções acima, retorna erro.
         else{
