@@ -49,6 +49,11 @@ int main(){
             listarCliente(clientes, numClientes);
         }
 
+     // Se o input do usuário = 4, realizar um débito.       
+        else if(opcao == 4){
+            debitoCliente(clientes, &numClientes);
+        }
+
      // Se o input do usuário não for nenhuma das opções acima, retorna erro.
         else{
             printf("\n");
