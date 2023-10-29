@@ -44,6 +44,10 @@ int main(){
             deletarCliente(clientes, &numClientes);
         }
 
+     // Se o input do usuário = 3, listar as tarefas cadastradas.
+        else if(opcao == 3){
+            listarCliente(clientes, numClientes);
+        }
 
      // Se o input do usuário não for nenhuma das opções acima, retorna erro.
         else{
