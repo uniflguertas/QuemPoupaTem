@@ -62,3 +62,30 @@ void cadastrarCliente(Cliente clientes[], int *numClientes) {
         printf("O limite de clientes atingido. Não é possível cadastrar mais clientes.\n");
     }
 }
+
+// Função de listagem dos clientes cadastrados:
+void listarCliente(Cliente clientes[], int numClientes) {
+    // Se número de clientes cadastrados > 0, mostrar lista.
+    if (numClientes > 0) {
+        printf("======================================================\n");
+        printf("\nLista de Clientes:\n");
+        printf("\n======================================================\n");
+        // Formato de amostragem dos clientes.
+        for (int i = 0; i < numClientes; i++) {
+            printf("\nCliente %d:\n", i + 1);
+            printf("Nome: %s\n", clientes[i].nome);
+            printf("CPF: %s\n", clientes[i].cpf);
+            printf("Tipo de Conta: %s\n", clientes[i].tipo_conta);
+            printf("Capital: R$%.2lf\n", clientes[i].valor_inicial);
+            printf("\n======================================================\n");
+            printf("\n");
+        }
+        printf("======================================================\n");
+    }
+        // Se não houver clientes cadastrados, retornar mensagem.
+    else {
+        printf("==========================================================\n");
+        printf("\n(ERRO: Nenhum cliente cadastrado)\n");
+        printf("\n==========================================================\n");
+    }
+}
