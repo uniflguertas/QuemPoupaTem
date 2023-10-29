@@ -33,5 +33,14 @@ int main(){
     } while (opcao != 0);
 //     ^ manter o loop enquanto opção != 0.
 
+ // Comando de escrita no arquivo binário:
+    FILE *file = fopen("clientes.bin", "wb");
+    if (file) {
+        fwrite(clientes, sizeof(Cliente), numClientes, file);
+        fclose(file);
+    } else {
+        printf("Erro ao salvar cliente. Tente novamente ou reinicie o programa.\n");
+    }
+    
     return 0;
 }
