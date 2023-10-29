@@ -1,4 +1,4 @@
-#include <stdio.h>
+Update proj.h#include <stdio.h>
 #include "proj.h"
 
 int main(){
@@ -57,6 +57,11 @@ int main(){
      // Se o input do usuário = 5, realizar um depósito.       
         else if(opcao == 5){
             depositoCliente(clientes, &numClientes);
+        }
+
+     // Se o input do usuário = 7, realizar uma tranferência entre contas.
+        else if(opcao == 7){
+            transferenciaClientes(clientes, &numClientes);
         }
 
      // Se o input do usuário não for nenhuma das opções acima, retorna erro.
