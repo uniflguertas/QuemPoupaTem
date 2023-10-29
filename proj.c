@@ -128,3 +128,54 @@ void deletarCliente(Cliente clientes[], int *numClientes) {
         printf("======================================================\n");
     }
 }
+
+//Função para realização de débitos:
+void debitoCliente (Cliente clientes[], int *numClientes) {
+ // Declaração de Variáveis.
+    double valorDebito;
+    char verificaCpf[12];
+    char verificaSenha[100];
+
+    printf("======================================================\n");
+
+ // Pedido ao usuário das informações necessárias (CPF e senha).
+    printf("\nRealizar Novo Débito:\n");
+    printf("\nDigite aqui o CPF: ");
+    scanf("%s", verificaCpf);
+    printf("Digite aqui a senha: ");
+    scanf("%s", verificaSenha);
+    printf("Digite aqui o valor do débito: R$");
+    scanf("%lf", &valorDebito);
+
+ // Se o número de clientes > 0, executa a função.
+    if (*numClientes > 0) {
+     // Laço de repetição para percorrer os clientes
+        for (int i = 0; i < *numClientes; i++) {
+         // String compare das informações fornecidas: se CPF e senha conferem para algum cliente, realiza o depósito.
+            if (strcmp(verificaCpf, clientes[i].cpf) == 0 && strcmp(verificaSenha, clientes[i].senha) == 0) {
+             // Condicional de acordo com o tipo de conta do usuário: se a conta é comum, aplica taxa de 5%, se plus, aplica taxa de 3%.
+                if (strcmp("comum", clientes[i].tipo_conta) == 0) {
+                    clientes[i].valor_inicial -= valorDebito + (valorDebito * 0.05);
+
+                    printf("\nDébito realizado com sucesso!\n");
+                    printf("======================================================\n");
+                }
+                else if (strcmp("plus", clientes[i].tipo_conta) == 0) {
+                    clientes[i].valor_inicial -= valorDebito + (valorDebito * 0.03);
+                }
+            }
+
+         // Se as informações não coincidirem com nenhum cliente, retorna erro.
+            else {
+                printf("\n(ERRO: CPF ou senha inválidos. Cliente não encontrado)\n");
+                printf("======================================================\n");
+            }
+        }
+    }
+
+ // Se não houver clientes cadastrados, retornar mensagem.
+    else {
+        printf("\n(ERRO: Nenhum cliente cadastrado)\n");
+        printf("======================================================\n");
+    }
+}
