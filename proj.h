@@ -1,3 +1,4 @@
+// struct "Cliente" que define as informações do cliente e seus componentes:
 typedef struct {
     char nome[1000];
     char cpf[12];
