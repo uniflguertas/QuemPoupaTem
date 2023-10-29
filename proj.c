@@ -89,3 +89,42 @@ void listarCliente(Cliente clientes[], int numClientes) {
         printf("\n==========================================================\n");
     }
 }
+
+// Função para deleção de clienes existentes:
+void deletarCliente(Cliente clientes[], int *numClientes) {
+    char verificaCpf[12];
+    char verificaSenha[100];
+
+    printf("======================================================\n");
+
+    printf("\nDeletar Cliente Existente:\n");
+    printf("\nDigite aqui o CPF: ");
+    scanf("%s", verificaCpf);
+    printf("Digite aqui a senha: ");
+    scanf("%s", verificaSenha);
+ // Se o número de clientes cadastrados > 0, executar a deleção.
+    if (*numClientes > 0) {
+     // Laço de repetição para percorrer os clientes cadastrados
+        for (int i = 0; i < *numClientes; i++) {
+            // Realiza o string compare (comparação de strings) para encontrar o cliente desejado para deleção, e assim atribuir nova numeração ao respectivo cliente de acordo com a ocorrência de deleções.
+            if (strcmp(verificaCpf, clientes[i].cpf) == 0 && strcmp(verificaSenha, clientes[i].senha) == 0) {
+                for (int numero = i; numero < *numClientes - 1; i++) {
+                    clientes[i] = clientes[i + 1];
+                }
+                // Deleta cliente em seu respectivo endereço atribuído.
+                (*numClientes)--;
+                printf("\nCliente deletado com sucesso!\n");
+                printf("======================================================\n");
+            } else {
+                printf("\n(ERRO: CPF ou senha inválidos. Cliente não encontrado)\n");
+                printf("======================================================\n");
+            }
+        }
+    }
+
+ // Se não houver clientes cadastrados, retornar mensagem.
+    else {
+        printf("\n(ERRO: Nenhum cliente cadastrado)\n");
+        printf("======================================================\n");
+    }
+}
