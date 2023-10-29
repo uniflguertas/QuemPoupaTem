@@ -179,3 +179,47 @@ void debitoCliente (Cliente clientes[], int *numClientes) {
         printf("======================================================\n");
     }
 }
+
+// Função para realização de depósitos:
+void depositoCliente (Cliente clientes[], int *numClientes) {
+ // Declaração de variáveis.
+    double valorDeposito;
+    char verificaCpf[12];
+
+    printf("======================================================\n");
+
+ // Pedido de informações necessárias para o usuário.
+    printf("\nRealizar Novo Depósito:\n");
+    printf("\nDigite aqui o CPF: ");
+    scanf("%s", verificaCpf);
+    printf("Digite aqui o valor do depósito: R$");
+    scanf("%lf", &valorDeposito);
+
+ // Se houver clientes, executa função.
+    if (*numClientes > 0) {
+     // Laço de repetição para percorrer os clientes.
+        for (int i = 0; i < *numClientes; i++) {
+         // String compare para verificar se há CPF compatível com o fornecido: se sim, executa o depósito.
+            if (strcmp(verificaCpf, clientes[i].cpf) == 0) {
+
+                    clientes[i].valor_inicial += valorDeposito;
+
+                    printf("\nDepósito realizado com sucesso!\n");
+                    printf("======================================================\n");
+
+            }
+
+         // Se não houver CPF compatível, retorna erro.
+            else {
+                printf("\n(ERRO: CPF ou senha inválidos. Cliente não encontrado)\n");
+                printf("======================================================\n");
+            }
+        }
+    }
+
+        // Se não houver clientes cadastrados, retornar mensagem.
+    else {
+        printf("\n(ERRO: Nenhum cliente cadastrado)\n");
+        printf("======================================================\n");
+    }
+}
