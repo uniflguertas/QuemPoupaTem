@@ -52,11 +52,13 @@ int main(){
      // Se o input do usuário = 4, realizar um débito.       
         else if(opcao == 4){
             debitoCliente(clientes, &numClientes);
+            adicionarTransacao(&clientes[0], 'C', clientes[0].valor_inicial);
         }
             
      // Se o input do usuário = 5, realizar um depósito.       
         else if(opcao == 5){
             depositoCliente(clientes, &numClientes);
+            adicionarTransacao(&clientes[0], 'D', clientes[0].valor_inicial);
         }
 
      // Se o input do usuário = 7, realizar uma tranferência entre contas.
