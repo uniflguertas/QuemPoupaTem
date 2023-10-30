@@ -1,3 +1,8 @@
+typedef struct {
+    double valor;
+    char tipo;
+} Transacao;
+
 // struct "Cliente" que define as informações do cliente e seus componentes:
 typedef struct {
     char nome[1000];
@@ -14,3 +19,5 @@ void deletarCliente(Cliente clientes[], int *numClientes);
 void debitoCliente(Cliente clientes[], int *numClientes);
 void depositoCliente(Cliente clientes[], int *numClientes);
 void transferenciaClientes(Cliente clientes[], int *numClientes);
+void adicionarTransacao(Cliente *cliente, char tipo, double valor);
+void imprimirExtrato(Cliente *cliente, const char *nomeArquivo);
