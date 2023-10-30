@@ -224,6 +224,46 @@ void depositoCliente (Cliente clientes[], int *numClientes) {
     }
 }
 
+void adicionarTransacao(Cliente *cliente, char tipo, double valor) {
+    if (cliente->num_transacoes < 100) {
+        Transacao transacao;
+        transacao.valor = valor;
+        transacao.tipo = tipo;
+        cliente->transacoes[cliente->num_transacoes] = transacao;
+        cliente->num_transacoes++;
+    } else {
+        printf("Limite de transações atingido para este cliente.\n");
+    }
+}
+
+void imprimirExtrato(Cliente *cliente, const char *nomeArquivo) {
+    FILE *arquivo = fopen(nomeArquivo, "w");
+    if (arquivo) {
+        fprintf(arquivo, "Extrato de Transações para o Cliente: %s\n", cliente->nome);
+        fprintf(arquivo, "CPF: %s\n\n", cliente->cpf);
+        for (int i = 0; i < cliente->num_transacoes; i++) {
+            Transacao transacao = cliente->transacoes[i];
+            if (transacao.tipo == 'D') {
+                fprintf(arquivo, "Tipo: Depósito\n");
+                fprintf(arquivo, "Valor: R$%.2lf\n", transacao.valor);
+            } else if (transacao.tipo == 'C') {
+                fprintf(arquivo, "Tipo: Débito\n");
+                fprintf(arquivo, "Valor: R$%.2lf\n", transacao.valor);
+            } else if (transacao.tipo == 'T') {
+                fprintf(arquivo, "Tipo: Transferência\n");
+                fprintf(arquivo, "Valor: R$%.2lf\n", transacao.valor);
+            }
+            fprintf(arquivo, "\n");
+        }
+        fclose(arquivo);
+        printf("\n======================================================\n");
+        printf("Extrato salvo em %s\n", nomeArquivo);
+        printf("\n======================================================\n");
+    } else {
+        printf("(ERRO: Não foi possível abrir o arquivo %s)\n", nomeArquivo);
+    }
+}
+
 //Função para realização de débitos:
 void transferenciaClientes (Cliente clientes[], int *numClientes) {
  // Declaração de Variáveis.
